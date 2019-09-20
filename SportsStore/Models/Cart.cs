@@ -5,28 +5,14 @@ namespace SportsStore.Models
 {
     public class Cart
     {
-        #region Properties
+        #region Properties & Fields
         private readonly IList<CartLine> _lines = new List<CartLine>();
-        public IEnumerable<CartLine> CartLines
-        {
-            get
-            {
-                return _lines.AsEnumerable();
-            }
-        }
 
-        public int NumberOfItems
-        {
-            get
-            {
-                return _lines.Count;
-            }
-        }
+        public IEnumerable<CartLine> CartLines => _lines.AsEnumerable();
 
-        public decimal TotalValue
-        {
-            get { return _lines.Sum(l => l.Product.Price * l.Quantity); }
-        }
+        public int NumberOfItems => _lines.Count;
+
+        public decimal TotalValue => _lines.Sum(l => l.Product.Price * l.Quantity);
         #endregion
 
         #region Methods
@@ -46,11 +32,7 @@ namespace SportsStore.Models
                 _lines.Remove(line);
         }
 
-        public void Clear()
-        {
-            _lines.Clear();
-        }
-
+        public void Clear() => _lines.Clear();
         #endregion
     }
 }
